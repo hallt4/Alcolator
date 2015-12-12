@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Szj-4V-nrG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -25,17 +25,19 @@
                                 <state key="normal" title="Calculate!">
                                     <color key="titleColor" red="0.95894396550000005" green="0.4551185345" blue="0.09097521552" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WdF-8V-D54"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="% Alcohol Content per Beer" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VD4-xZ-3kQ">
                                 <rect key="frame" x="20" y="28" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="Of4-AG-VGN"/>
+                                </connections>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="cXk-qY-ajs">
-                                <rect key="frame" x="18" y="66" width="564" height="31"/>
-                                <animations/>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhK-Yh-VaQ">
                                 <rect key="frame" x="279" y="192" width="42" height="21"/>
                                 <animations/>
@@ -43,6 +45,13 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="cXk-qY-ajs">
+                                <rect key="frame" x="18" y="66" width="564" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="sliderValueDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="FID-T6-I3h"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -64,11 +73,102 @@
                             <outletCollection property="gestureRecognizers" destination="P5l-u6-NGS" appends="YES" id="CWZ-K0-76u"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="beerCountSlider" destination="cXk-qY-ajs" id="e7E-Ct-z0J"/>
+                        <outlet property="beerPercenttextField" destination="VD4-xZ-3kQ" id="gnm-Xk-jqp"/>
+                        <outlet property="resultLabe" destination="rhK-Yh-VaQ" id="zVV-KG-UA7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="P5l-u6-NGS"/>
+                <tapGestureRecognizer id="P5l-u6-NGS">
+                    <connections>
+                        <action selector="tapGestureDidFire:" destination="BYZ-38-t0r" id="v1a-pE-bZO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="140" y="388"/>
+            <point key="canvasLocation" x="-350" y="520"/>
+        </scene>
+        <!--Whiskey View Controller-->
+        <scene sceneID="OPW-ao-WVz">
+            <objects>
+                <viewController id="Szj-4V-nrG" customClass="WhiskeyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cZ2-NF-BzQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="xsM-Jf-xZW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lc2-FF-79o">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpI-FP-9Od">
+                                <rect key="frame" x="237" y="115" width="127" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                <state key="normal" title="Calculate!">
+                                    <color key="titleColor" red="0.95894396550000005" green="0.4551185345" blue="0.09097521552" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Szj-4V-nrG" eventType="touchUpInside" id="0yd-Zp-2Ne"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="% Alcohol Content per Beer" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ha-MP-V9b">
+                                <rect key="frame" x="20" y="28" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="Szj-4V-nrG" eventType="editingChanged" id="tTg-3i-Swr"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0K6-Y6-DLG">
+                                <rect key="frame" x="279" y="192" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="XYf-Di-5Wi">
+                                <rect key="frame" x="18" y="66" width="564" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="sliderValueDidChange:" destination="Szj-4V-nrG" eventType="valueChanged" id="72d-Z6-QSP"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="5ha-MP-V9b" secondAttribute="trailing" id="6iO-Ki-vGx"/>
+                            <constraint firstItem="XYf-Di-5Wi" firstAttribute="top" secondItem="5ha-MP-V9b" secondAttribute="bottom" constant="8" id="7UL-bb-QBY"/>
+                            <constraint firstItem="0K6-Y6-DLG" firstAttribute="top" secondItem="XpI-FP-9Od" secondAttribute="bottom" constant="47" id="AA7-GG-CzM"/>
+                            <constraint firstItem="XpI-FP-9Od" firstAttribute="top" secondItem="XYf-Di-5Wi" secondAttribute="bottom" constant="19" id="Erk-Oo-lvd"/>
+                            <constraint firstItem="XYf-Di-5Wi" firstAttribute="width" secondItem="5ha-MP-V9b" secondAttribute="width" id="FVx-yK-UJ0"/>
+                            <constraint firstItem="5ha-MP-V9b" firstAttribute="top" secondItem="cZ2-NF-BzQ" secondAttribute="bottom" constant="8" id="Gbl-8y-Izh"/>
+                            <constraint firstItem="XYf-Di-5Wi" firstAttribute="centerX" secondItem="5ha-MP-V9b" secondAttribute="centerX" id="J7t-1X-172"/>
+                            <constraint firstItem="0K6-Y6-DLG" firstAttribute="leading" secondItem="lc2-FF-79o" secondAttribute="leadingMargin" constant="15" id="Jv2-rd-C4I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0K6-Y6-DLG" secondAttribute="trailing" constant="15" id="MWR-s8-Ibd"/>
+                            <constraint firstItem="5ha-MP-V9b" firstAttribute="leading" secondItem="lc2-FF-79o" secondAttribute="leadingMargin" id="c7F-XP-QxE"/>
+                            <constraint firstItem="XpI-FP-9Od" firstAttribute="centerX" secondItem="XYf-Di-5Wi" secondAttribute="centerX" id="rwm-s0-8Sd"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uvS-RP-rhB" appends="YES" id="rez-4f-GdN"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="beerCountSlider" destination="XYf-Di-5Wi" id="Ede-ea-p3E"/>
+                        <outlet property="beerPercenttextField" destination="5ha-MP-V9b" id="ndk-cT-knJ"/>
+                        <outlet property="resultLabe" destination="0K6-Y6-DLG" id="4Fz-ga-Lqh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBE-Pl-qLb" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uvS-RP-rhB">
+                    <connections>
+                        <action selector="tapGestureDidFire:" destination="Szj-4V-nrG" id="38X-8U-UzH"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="366" y="520"/>
         </scene>
     </scenes>
 </document>
