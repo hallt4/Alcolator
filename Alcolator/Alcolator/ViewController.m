@@ -36,12 +36,6 @@
     }
 }
 
-- (IBAction)sliderValueDidChange:(UISlider *)sender {
-    
-    NSLog(@"Slider value changed to %f", sender.value);
-    
-    [self.beerPercenttextField resignFirstResponder];
-}
 
 - (IBAction)buttonPressed:(id)sender {
     [self.beerPercenttextField resignFirstResponder];
@@ -78,7 +72,19 @@
     
     self.resultLabe.text = resultText;
     
+    self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Wine(%.1f %@)", nil), numberOfWineGlassesforEquivalentAlcoholAmount, wineText];
+    
 }
+
+- (IBAction)sliderValueDidChange:(UISlider *)sender {
+    
+    NSLog(@"Slider value changed to %f", sender.value);
+    
+    [self buttonPressed:(id) sender];
+    
+    [self.beerPercenttextField resignFirstResponder];
+}
+
 
 - (IBAction)tapGestureDidFire:(UITapGestureRecognizer *)sender {
     [self.beerPercenttextField resignFirstResponder];
