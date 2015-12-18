@@ -52,6 +52,8 @@
     
     self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Whiskey(%.1f %@)", nil),numberOfWhiskeyGlassesForEquivalentAlcoholAmount, whiskeyText];
     
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) numberOfWhiskeyGlassesForEquivalentAlcoholAmount]];
+    
 
 }
 

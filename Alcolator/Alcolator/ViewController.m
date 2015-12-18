@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //self.beerCountSlider set
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -71,8 +72,11 @@
     NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ (with %.2f%% alcohol) contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText,  [self.beerPercenttextField.text floatValue], numberOfWineGlassesforEquivalentAlcoholAmount, wineText];
     
     self.resultLabe.text = resultText;
+    //[self.resultLabe sizeToFit];
     
     self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Wine(%.1f %@)", nil), numberOfWineGlassesforEquivalentAlcoholAmount, wineText];
+    
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) numberOfWineGlassesforEquivalentAlcoholAmount]];
     
 }
 
@@ -80,9 +84,11 @@
     
     NSLog(@"Slider value changed to %f", sender.value);
     
-    [self buttonPressed:(id) sender];
+    //[self buttonPressed:(id) sender];
     
     [self.beerPercenttextField resignFirstResponder];
+    
+    
 }
 
 
